@@ -11,7 +11,7 @@ interface BaseRepositoryInterface
 
     public function create(array $data): Model;
 
-    public function update(array $data, Model $model): Model;
+    public function update(array $data, Model $model): bool;
 
     public function delete(Model $model): bool;
 

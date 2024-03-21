@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Repositories\Contracts\UserRepositoryInterface;
-use App\Services\UserService;
+use App\Services\Contracts\UserServiceInterface;
 use Illuminate\View\View;
 
 final class UserController extends Controller
 {
     public function __construct(
-        private readonly UserRepositoryInterface $userRepository,
-        private readonly UserService $userService
+        private readonly UserServiceInterface $userService
     ) {
     }
 
     public function index(): View
     {
-        $users = $this->userRepository->all();
+        $users = $this->userService->all();
         return view('admin.users.index', compact('users'));
     }
 
